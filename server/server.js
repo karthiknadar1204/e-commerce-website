@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import connectDb from './config/db.js';
 import authRouter from './routes/authRoutes.js';
+import categoryRouter from "./routes/categoryRoutes.js"
+import productRouter from "./routes/productRoutes.js";
 import cors from "cors";
 
 const app = express();
@@ -28,6 +30,8 @@ app.get('/', (req, res) => {
 const port = process.env.PORT;
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/category", categoryRouter);
+app.use("/api/v1/product", productRouter);
 
 app.listen(port, () => {
     console.log('Server is running on port ' + port);
